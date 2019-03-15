@@ -7,10 +7,10 @@ class Detail extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { 
-			result: null,
-		}
-		this._handlePressButtonAsync=this._handlePressButtonAsync.bind(this);
+		// this.state = { 
+		// 	result: null,
+		// }
+		// this._handlePressButtonAsync=this._handlePressButtonAsync.bind(this);
 	};
 
 	static navigationOptions = ({ navigation }) => ({
@@ -25,13 +25,13 @@ class Detail extends Component {
       			size={32} 
       			color='#fff'
       			style={{marginRight: 10}}
-      			onPress={ this._handlePressButtonAsync }
+      			// onPress={ this._handlePressButtonAsync }
         	/>),
 	
-		_handlePressButtonAsync = async () => {
-	    	let result = await WebBrowser.openBrowserAsync( navigation.getParam('contact').filmUrl );
-	    	this.setState({ result });
-	  	};
+		// _handlePressButtonAsync = async () => {
+	 //    	let result = await WebBrowser.openBrowserAsync( navigation.getParam('contact').filmUrl );
+	 //    	this.setState({ result });
+	 //  	};
   	});
 
 	render() {
