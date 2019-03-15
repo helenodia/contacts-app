@@ -96,8 +96,8 @@ class List extends Component {
 
 	render() {
 	let { contacts, isFetching } = this.state;
-	
-		if ({ contacts }) {
+
+		if (contacts.length > 0) {
 			return (
 				<FlatList 
 					data={ contacts } 

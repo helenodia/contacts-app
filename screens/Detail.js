@@ -1,38 +1,36 @@
 import React, { Component, Fragment } from 'react';
-import { StyleSheet, View, Image, Text, Butto } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import { Constants, WebBrowser } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 
 class Detail extends Component {
 	constructor(props) {
 		super(props);
-
-		// this.state = { 
-		// 	result: null,
-		// }
-		// this._handlePressButtonAsync=this._handlePressButtonAsync.bind(this);
 	};
 
-	static navigationOptions = ({ navigation }) => ({
-		title: navigation.getParam('contact').name,
-		headerTintColor: '#fff',
-		headerStyle: {
-			backgroundColor: '#2a3daa',
-		},
-		headerRight: ( 
-      		<Ionicons 
-      			name='md-film' 
-      			size={32} 
-      			color='#fff'
-      			style={{marginRight: 10}}
-      			// onPress={ this._handlePressButtonAsync }
-        	/>),
-	
-		// _handlePressButtonAsync = async () => {
-	 //    	let result = await WebBrowser.openBrowserAsync( navigation.getParam('contact').filmUrl );
-	 //    	this.setState({ result });
-	 //  	};
-  	});
+	static navigationOptions = ({ navigation }) => {
+		const { name, filmUrl } = navigation.getParam('contact'); //from handlepress fn
+
+		return {
+			title: name, // from the above line
+			headerTintColor: '#fff',
+			headerStyle: {
+				backgroundColor: '#2a3daa',
+			},
+			headerRight: ( 
+				<TouchableOpacity
+		      		onPress={ () =>  WebBrowser.openBrowserAsync( filmUrl )}
+		      		underlayColor='#e4e4e4' 
+				>
+		      		<Ionicons 
+		      			name='md-film' 
+		      			size={32} 
+		      			color='#fff'
+		      			style={{marginRight: 10}}
+		        	/>
+	        	</TouchableOpacity>
+        )};
+  	};
 
 	render() {
 		const { name, address, picture, company, gender, filmName } = this.props.navigation.getParam('contact');
